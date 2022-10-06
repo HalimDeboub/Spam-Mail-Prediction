@@ -44,5 +44,15 @@ features_extraction = TfidfVectorizer(min_df=1, stop_words="english", lowercase=
 messages_train_features = features_extraction.fit_transform(messages_train)
 messages_test_features = features_extraction.transform(messages_test)
 
+# changing the type of categories from object to integer
+categories_train = categories_train.astype('int')
+categories_test = categories_test.astype('int')
+
+print(messages_train_features)
+
+# training the logistic regression model
+model = LogisticRegression()
+model.fit(messages_train_features,categories_train)
+
 
 
