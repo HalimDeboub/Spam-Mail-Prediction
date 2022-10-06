@@ -56,3 +56,12 @@ model.fit(messages_train_features,categories_train)
 
 
 
+# evaluating the trained model
+# 1-predicting on training data
+prediction_on_training_data = model.predict(messages_train_features)
+accuracy_on_training_data = accuracy_score(categories_train,prediction_on_training_data)
+print(accuracy_on_training_data)
+# 2-predicting on test data
+prediction_on_test_data = model.predict(messages_test_features)
+accuracy_on_test_data = accuracy_score(categories_test,prediction_on_test_data)
+print(accuracy_on_test_data)
