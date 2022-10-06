@@ -30,9 +30,19 @@ categories=raw_mail['Category']
 
 print(categories)
 
-#spliting thre data into training set and test set
+#spliting the data into training set and test set
 
-messages_train,messages_test,categories_train,categories_test=train_test_split(messages,categories,test_size=0.2,random_state=3)
+messages_train, messages_test, categories_train, categories_test = train_test_split(messages, categories, test_size=0.2, random_state = 3)
 print(messages.shape)
 print(messages_train.shape)
 print(messages_test.shape)
+
+# feature extraction (turning the text into numerical values to be
+# understandable by the logistic regression)
+
+features_extraction = TfidfVectorizer(min_df=1, stop_words="english", lowercase="true")
+messages_train_features = features_extraction.fit_transform(messages_train)
+messages_test_features = features_extraction.transform(messages_test)
+
+
+
