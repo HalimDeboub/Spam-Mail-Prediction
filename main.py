@@ -65,3 +65,17 @@ print(accuracy_on_training_data)
 prediction_on_test_data = model.predict(messages_test_features)
 accuracy_on_test_data = accuracy_score(categories_test,prediction_on_test_data)
 print(accuracy_on_test_data)
+
+# building a predictive system
+input_mail = ["Had your mobile 11 months or more? U R entitled to Update to the latest colour mobiles with camera for Free! Call The Mobile Update Co FREE on 08002986030"]
+# transfrom the mail text to feature data
+input_mail_feature = features_extraction.transform(input_mail)
+# prediction
+prediction= model.predict(input_mail_feature)
+
+
+if prediction[0] == 1 :
+    prediction = "ham"
+else :
+    prediction = "spam"
+print(prediction)
